@@ -1,1 +1,8 @@
+I wanted to find a price alert for stocks and currencies
+so I can make bizillions of dollars with the least of amount of time as possible
+but I couldn't find one without a paywall or timelimit.
 
+I decided to write my own in python with scheduled to run at 2:30, 30 minutes after my
+the market closes.
+
+eventually, I am going to set it up on heroku servers so I never have to look at it.
