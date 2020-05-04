@@ -2,7 +2,40 @@ I wanted to find a price alert for stocks and currencies
 so I can make bizillions of dollars with the least of amount of time as possible
 but I couldn't find one without a paywall or timelimit.
 
-I decided to write my own in python with scheduled to run at 2:30, 30 minutes after my
-the market closes.
+some price alerts only had about 2 month time limit.
 
-eventually, I am going to set it up on heroku servers so I never have to look at it.
+as we have seen in highs in tesla in 2020 at 950 per share. 
+before that, the previous highs were at 381 dollars per share on june 12, 2017 where
+price per share just floated around.
+
+eventually the tesla stock dropped to 180 on june 9, 2019 before skyrocketing to 900 dollars.
+the most best, opportunity to purhase tesla stock did not appear until about two years later.
+which lead to write this script.
+
+couple of things I wish to do with this program.
+
+1. inital build of stock price alert - complete
+2. build a forex price alert
+3. failed price alert
+4. get it up and running on heroku server
+5. put each securities into classes
+6. finish
+
+1. the stock price alert is in python with scheduled to run at 2:30, 30 minutes after my
+the market closes. I have it send a email notification when it hits the price i want.
+
+2. I will build a forex price alert, slightly more difficult because each
+currency pair uses a slightly different notation.
+
+3. sometimes, price will not go drop where I want to buy or go up where I want to sell 
+then continue on its merry own way. I am going to set the program to send an email saying
+that I need to reset the parameters to the program.
+
+4. upload my code onto heroku servers, so I never have to keep my laptop running. also, set up 
+sms messaging to get text for higher ratio trades.
+
+5. make a base class in python, so if I ever wish to expand to different securities
+such as bonds, precious metal and commodities. I will have a road map.
+
+6. eventaully I have the program running where I never have to look at until I get an email
+or text message.
