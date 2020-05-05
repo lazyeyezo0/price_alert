@@ -14,12 +14,14 @@ which lead to write this script.
 
 couple of things I wish to do with this program.
 
+features roadmap:
 1. inital build of stock price alert - complete
 2. build a forex price alert
 3. failed price alert
-4. get it up and running on heroku server
-5. put each securities into classes
-6. finish
+4. automated testing
+5. get it up and running on heroku server
+6. put each securities into classes
+7. finish
 
 1. the stock price alert is in python with scheduled to run at 2:30, 30 minutes after my
 the market closes. I have it send a email notification when it hits the price i want.
@@ -31,11 +33,14 @@ currency pair uses a slightly different notation.
 then continue on its merry own way. I am going to set the program to send an email saying
 that I need to reset the parameters to the program.
 
-4. upload my code onto heroku servers, so I never have to keep my laptop running. also, set up 
+4. write testing code to run once every first wednesday of the month, check if all code works
+as intended and email myself when it doesn't
+
+5. upload my code onto heroku servers, so I never have to keep my laptop running. also, set up 
 sms messaging to get text for higher ratio trades.
 
-5. make a base class in python, so if I ever wish to expand to different securities
+6. make a base class in python, so if I ever wish to expand to different securities
 such as bonds, precious metal and commodities. I will have a road map.
 
-6. eventaully I have the program running where I never have to look at until I get an email
+7. eventaully I have the program running where I never have to look at until I get an email
 or text message.

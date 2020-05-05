@@ -1,3 +1,7 @@
+##
+##       still a work in process
+##
+
 import config as hidden
 import watchlist as wl
 import requests, json

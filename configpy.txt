@@ -1,0 +1,5 @@
+alpha_api = 'alpha-vantage-key-here'
+email = 'your-email-here'
+email_password = 'your-email-password-here'
+OANDA_ID = 'oanda-id-here'
+OANDA_AUTH = 'oanda-key-here'

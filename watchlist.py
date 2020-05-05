@@ -1,6 +1,6 @@
 stock = {
-    'TSLA':350,
-    'AAPL':210,
+    'TSLA':760,
+    'AAPL':290,
     'AMZN':1600,
     'AMD':35,
 }
