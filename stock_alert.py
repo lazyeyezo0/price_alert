@@ -6,17 +6,10 @@ request==2.23.0
 """
 
 import config as hidden
+import watchlist as wl
 from datetime import datetime
-import alpaca_trade_api as tradeapi
 import alpha_vantage.timeseries as avt
 import smtplib, ssl
-import requests
-
-
-base_url = 'https://paper-api.alpaca.markets'
-watchlist_url = '{}/v2/watchlists/{}'.format(base_url, hidden.alpaca_watchlist_id)
-account_url = '{}/v2/account'.format(base_url)
-header = {'APCA-API-KEY-ID': hidden.api_key_id, 'APCA-API-SECRET-KEY': hidden.secret_key}
 
 activate_stock = []
 
@@ -39,10 +32,12 @@ def price_alert(strticker):
         price_range = get_price_range(ticker, date)
         if price in price_range:
             activate_stock.append(ticker)
+        else:
+            None
 
 def check_list(activate_stock):
     if len(activate_stock) > 0:
-        email_notification()
+        email_notification(activate_stock)
     else:
         None
 
@@ -57,12 +52,5 @@ def email_notification(activate_stock):
         server.login(hidden.email,hidden.email_password)
         server.sendmail(sender_email, receiver_email,message)
 
-watchlist_and_price = {
-    'TSLA':350
-    'AAPL':210
-    'AMZN':1600
-    'AMD':35
-}
-
-price_alert(watch_and_price)
+price_alert(wl.stock)
 check_list(activate_stock)
