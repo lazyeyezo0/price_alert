@@ -1,13 +1,16 @@
-"""
-python==3.7.4
-alpha_vantage==2.2.0
-"""
+
+# =============================================================================
+# python==3.7.4
+# alpha_vantage==2.2.0
+# 
+# =============================================================================
 
 import config as hidden
 import watchlist as wl
 from datetime import datetime
 import alpha_vantage.timeseries as avt
 import smtplib, ssl
+import os
 
 activate_stock = []
 
@@ -26,19 +29,18 @@ def get_price_range(strticker, isodate):
 def price_alert(strticker):
     """Find the right price level."""
     date = get_today()
+    x = []
     for ticker, price in strticker.items():
         price_range = get_price_range(ticker, date)
         if price in price_range:
-            activate_stock.append(ticker)
-        else:
-            None
+            x.append(ticker)
+    return x
+        
 
 def check_list(activate_stock):
     """checks lists then activate email func if not empty"""
     if len(activate_stock) > 0:
         email_notification(activate_stock)
-    else:
-        None
 
 
 def write_message(activate_stock):
@@ -56,7 +58,7 @@ def email_notification(activate_stock):
 
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        server.login(hidden.email,hidden.email_password)
+        server.login(receiver_email,hidden.email_password)
         server.sendmail(sender_email, receiver_email,message)
 
 

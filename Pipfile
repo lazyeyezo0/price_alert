@@ -11,6 +11,7 @@ alpaca-trade-api = "*"
 alpha-vantage = "*"
 requests = "*"
 python = "==3.6.10"
+twilio = "*"
 
 [requires]
 python_version = "3.7"
