@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun May 10 04:11:10 2020
+import forex_alert
 
-@author: johnny
-"""
-
-import sys
-
-print(sys.executable)
+a = forex_alert.get_forex_data(forex_alert.EUR_USD)
+print(a)

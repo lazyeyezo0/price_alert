@@ -1,0 +1,6 @@
+[
+  "test_price_forex.py::test_message",
+  "test_price_forex.py::test_oanda_response",
+  "test_price_forex.py::test_get_price_range",
+  "test_price_forex.py::test_get_jpy_price_range"
+]

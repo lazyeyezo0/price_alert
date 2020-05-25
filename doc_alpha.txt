@@ -1,0 +1,153 @@
+CLASSES
+    alpha_vantage.alphavantage.AlphaVantage(builtins.object)
+        TimeSeries
+
+    class TimeSeries(alpha_vantage.alphavantage.AlphaVantage)
+     |  TimeSeries(key=None, output_format='json', treat_info_as_error=True, indexing_type='date', proxy=None, rapidapi=False)
+     |
+     |  This class implements all the api calls to times series
+     |
+     |  Method resolution order:
+     |      TimeSeries
+     |      alpha_vantage.alphavantage.AlphaVantage
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  get_daily(self, symbol, outputsize='compact')
+     |      Return daily time series in two json objects as data and
+     |      meta_data. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |          outputsize:  The size of the call, supported values are
+     |              'compact' and 'full; the first returns the last 100 points in the
+     |              data series, and 'full' returns the full-length daily times
+     |              series, commonly above 1MB (default 'compact')
+     |
+     |  get_daily_adjusted(self, symbol, outputsize='compact')
+     |      Return daily adjusted (date, daily open, daily high, daily low,
+     |      daily close, daily split/dividend-adjusted close, daily volume)
+     |      time series in two json objects as data and
+     |      meta_data. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |          outputsize:  The size of the call, supported values are
+     |              'compact' and 'full; the first returns the last 100 points in the
+     |              data series, and 'full' returns the full-length daily times
+     |              series, commonly above 1MB (default 'compact')
+     |
+     |  get_intraday(self, symbol, interval='15min', outputsize='compact')
+     |      Return intraday time series in two json objects as data and
+     |      meta_data. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |          interval:  time interval between two conscutive values,
+     |              supported values are '1min', '5min', '15min', '30min', '60min'
+     |              (default '15min')
+     |          outputsize:  The size of the call, supported values are
+     |              'compact' and 'full; the first returns the last 100 points in the
+     |              data series, and 'full' returns the full-length intraday times
+     |              series, commonly above 1MB (default 'compact')
+     |
+     |  get_monthly(self, symbol)
+     |      Return monthly time series in two json objects as data and
+     |      meta_data. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |
+     |  get_monthly_adjusted(self, symbol)
+     |      Return monthly time series in two json objects as data and
+     |      meta_data. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |
+     |  get_quote_endpoint(self, symbol)
+     |      Return the latest price and volume information for a
+     |       security of your choice
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |
+     |  get_symbol_search(self, keywords)
+     |      Return best matching symbols and market information
+     |      based on keywords. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          keywords: the keywords to query on
+     |
+     |  get_weekly(self, symbol)
+     |      Return weekly time series in two json objects as data and
+     |      meta_data. It raises ValueError when problems arise
+     |
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |
+     |  get_weekly_adjusted(self, symbol)
+     |      weekly adjusted time series (last trading day of each week,
+     |      weekly open, weekly high, weekly low, weekly close, weekly adjusted
+     |      close, weekly volume, weekly dividend) of the equity specified,
+     |      covering up to 20 years of historical data.
+     |      Keyword Arguments:
+     |          symbol:  the symbol for the equity we want to get its data
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from alpha_vantage.alphavantage.AlphaVantage:
+     |
+     |  __init__(self, key=None, output_format='json', treat_info_as_error=True, indexing_type='date', proxy=None, rapidapi=False)
+     |      Initialize the class
+     |
+     |      Keyword Arguments:
+     |          key:  Alpha Vantage api key
+     |          retries:  Maximum amount of retries in case of faulty connection or
+     |              server not able to answer the call.
+     |          treat_info_as_error: Treat information from the api as errors
+     |          output_format:  Either 'json', 'pandas' os 'csv'
+     |          indexing_type: Either 'date' to use the default date string given
+     |          by the alpha vantage api call or 'integer' if you just want an
+     |          integer indexing on your dataframe. Only valid, when the
+     |          output_format is 'pandas'
+     |          proxy: Dictionary mapping protocol or protocol and hostname to
+     |          the URL of the proxy.
+     |          rapidapi: Boolean describing whether or not the API key is
+     |          through the RapidAPI platform or not
+     |
+     |  map_to_matype(self, matype)
+     |      Convert to the alpha vantage math type integer. It returns an
+     |      integer correspondent to the type of math to apply to a function. It
+     |      raises ValueError if an integer greater than the supported math types
+     |      is given.
+     |
+     |      Keyword Arguments:
+     |          matype:  The math type of the alpha vantage api. It accepts
+     |          integers or a string representing the math type.
+     |
+     |              * 0 = Simple Moving Average (SMA),
+     |              * 1 = Exponential Moving Average (EMA),
+     |              * 2 = Weighted Moving Average (WMA),
+     |              * 3 = Double Exponential Moving Average (DEMA),
+     |              * 4 = Triple Exponential Moving Average (TEMA),
+     |              * 5 = Triangular Moving Average (TRIMA),
+     |              * 6 = T3 Moving Average,
+     |              * 7 = Kaufman Adaptive Moving Average (KAMA),
+     |              * 8 = MESA Adaptive Moving Average (MAMA)
+     |
+     |  set_proxy(self, proxy=None)
+     |      Set a new proxy configuration
+     |
+     |      Keyword Arguments:
+     |          proxy: Dictionary mapping protocol or protocol and hostname to
+     |          the URL of the proxy.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from alpha_vantage.alphavantage.AlphaVantage:
+     |
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)

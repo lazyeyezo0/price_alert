@@ -1,0 +1,269 @@
+import requests
+import alpaca_trade_api as tradeapi
+
+base_url = 'https://paper-api.alpaca.markets'
+watchlist_url = '{}/v2/watchlists/{}'.format(base_url, hidden.alpaca_watchlist_id)
+account_url = '{}/v2/account'.format(base_url)
+header = {'APCA-API-KEY-ID': hidden.api_key_id, 'APCA-API-SECRET-KEY': hidden.secret_key}
+
+
+CLASSES
+    builtins.Exception(builtins.BaseException)
+        APIError
+        RetryException
+    builtins.object
+        REST
+
+    class APIError(builtins.Exception)
+     |  APIError(error, http_error=None)
+     |
+     |  Represent API related error.
+     |  error.status_code will have http status code.
+     |
+     |  Method resolution order:
+     |      APIError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, error, http_error=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |
+     |  code
+     |
+     |  request
+     |
+     |  response
+     |
+     |  status_code
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.Exception:
+     |
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |
+     |  __reduce__(...)
+     |      Helper for pickle.
+     |
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |
+     |  __setstate__(...)
+     |
+     |  __str__(self, /)
+     |      Return str(self).
+     |
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |
+     |  __cause__
+     |      exception cause
+     |
+     |  __context__
+     |      exception context
+     |
+     |  __dict__
+     |
+     |  __suppress_context__
+     |
+     |  __traceback__
+     |
+     |  args
+
+    class REST(builtins.object)
+     |  REST(key_id=None, secret_key=None, base_url=None, api_version=None, oauth=None)
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, key_id=None, secret_key=None, base_url=None, api_version=None, oauth=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  add_to_watchlist(self, watchlist_id, symbol)
+     |
+     |  add_watchlist(self, watchlist_name)
+     |
+     |  cancel_all_orders(self)
+     |      Cancel all open orders
+     |
+     |  cancel_order(self, order_id)
+     |      Cancel an order
+     |
+     |  close_all_positions(self)
+     |      Liquidates all open positions at market price
+     |
+     |  close_position(self, symbol)
+     |      Liquidates the position for the given symbol at market price
+     |
+     |  data_get(self, path, data=None)
+     |
+     |  delete(self, path, data=None)
+     |
+     |  delete_from_watchlist(self, watchlist_id, symbol)
+     |
+     |  delete_watchlist(self, watchlist_id)
+     |
+     |  get(self, path, data=None)
+     |
+     |  get_account(self)
+     |      Get the account
+     |
+     |  get_account_configurations(self)
+     |      Get account configs
+     |
+     |  get_activities(self, activity_types=None, until=None, after=None, direction=None, date=None, page_size=None, page_token=None)
+     |
+     |  get_asset(self, symbol)
+     |      Get an asset
+     |
+     |  get_barset(self, symbols, timeframe, limit=None, start=None, end=None, after=None, until=None)
+     |      Get BarSet(dict[str]->list[Bar])
+     |      The parameter symbols can be either a comma-split string
+     |      or a list of string. Each symbol becomes the key of
+     |      the returned value.
+     |
+     |  get_calendar(self, start=None, end=None)
+     |
+     |  get_clock(self)
+     |
+     |  get_order(self, order_id)
+     |      Get an order
+     |
+     |  get_order_by_client_order_id(self, client_order_id)
+     |      Get an order by client order id
+     |
+     |  get_portfolio_history(self, date_start=None, date_end=None, period=None, timeframe=None, extended_hours=None)
+     |
+     |  get_position(self, symbol)
+     |      Get an open position
+     |
+     |  get_watchlist(self, watchlist_id)
+     |
+     |  get_watchlists(self)
+     |
+     |  list_assets(self, status=None, asset_class=None)
+     |      Get a list of assets
+     |
+     |  list_orders(self, status=None, limit=None, after=None, until=None, direction=None, params=None, nested=None)
+     |      Get a list of orders
+     |      https://docs.alpaca.markets/web-api/orders/#get-a-list-of-orders
+     |
+     |  list_positions(self)
+     |      Get a list of open positions
+     |
+     |  patch(self, path, data=None)
+     |
+     |  post(self, path, data=None)
+     |
+     |  replace_order(self, order_id, qty=None, limit_price=None, stop_price=None, time_in_force=None, client_order_id=None)
+     |
+     |  submit_order(self, symbol, qty, side, type, time_in_force, limit_price=None, stop_price=None, client_order_id=None, extended_hours=None, order_class=None, take_profit=None, stop_loss=None)
+     |      Request a new order
+     |
+     |  update_account_configurations(self, no_shorting=None, dtbp_check=None, trade_confirm_email=None, suspend_trade=None)
+     |      Update account configs
+     |
+     |  update_watchlist(self, watchlist_id, name=None, symbols=None)
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+    class RetryException(builtins.Exception)
+     |  Common base class for all non-exit exceptions.
+     |
+     |  Method resolution order:
+     |      RetryException
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |
+     |  Data descriptors defined here:
+     |
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.Exception:
+     |
+     |  __init__(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.Exception:
+     |
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |
+     |  __reduce__(...)
+     |      Helper for pickle.
+     |
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |
+     |  __setstate__(...)
+     |
+     |  __str__(self, /)
+     |      Return str(self).
+     |
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |
+     |  __cause__
+     |      exception cause
+     |
+     |  __context__
+     |      exception context
+     |
+     |  __dict__
+     |
+     |  __suppress_context__
+     |
+     |  __traceback__
+     |
+     |  args

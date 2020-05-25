@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\johnny\\.virtualenvs\\price_alert-tHq02Ww7\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\johnny\\.virtualenvs\\price_alert-tHq02Ww7\\Scripts\\python.exe",
+    "python.formatting.provider": "black"
 }
